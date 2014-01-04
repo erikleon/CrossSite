@@ -1,0 +1,31 @@
+This is the CROSS THE PARK game read me. 
+
+Rules
+Goal: In this game players (2-6) will attempt to cross Central park in the midst of an apocalypse. The first player to reach the opposite North/South side from where they began wins.
+
+Components:
+Game Map
+6 Player Tokens
+1 D6
+1 ITEMS die
+4 ACTIONS dice (Green/Yellow/Blue/Red)
+1 DIE die
+7 LOCATIONS cards
+12 ITEMS cards
+QR Code scanner for each player
+
+Set-Up/Game Start: All players start on one of the squares on either the North or  South edge of the map numbered 1-6. All the players roll the d6 to determine turn order, with the highest number going first (ties are re-rolled), and then going in clockwise order. Before beginning main gameplay, players roll the ITEMS die to receive their starting item.
+
+Gameplay:
+On their turn, players roll the ACTIONS die for the corresponding color of the square they are in. The color determines how hazardous the area is. (Safest: Green-->Yellow/Blue-->Red :Most Dangerous) They scan the QR code of the resulting die roll to determine the outcome of their travels.
+Searching a location (fulfilling the location card’s text) is done when starting your turn in that location, not when landing there.
+No movement action can move a player off the map, thus any action that would do so leaves them on the outermost square.
+An adjacent square is any one directly next to the square, including diagonals.
+Distance is counted by the least amount of non-diagonal movements required to move between squares.
+Players may use an item in their possession whenever it is appropriate by the item’s description. Players may only have two items at a time. Taking an opportunity to re-roll the ITEMS die when you already have two items will replace one of the items in your possession, of your choosing. Using all of the uses available for an item equates to losing that item.
+If two players end up in the same square, they will ‘fight’ to steal each other’s resources. Both players roll the d6. If they tie their rolls, nothing happens. Otherwise, the player with the lower roll loses one item, of their choosing, if they have any, and the player with the higher roll has the option to roll the ITEMS die. Additionally, if one player rolls a 1, and the other player a 6, the player who rolled the 1 is ‘mortally wounded’ and thus has to roll the DIE die. No items may be used in a player fight.
+If a player has to roll the DIE die and dies, they must move their player token back to their starting position. They lose any items they had, and must roll the ITEMS die to get a new item.
+Fulfilling the action of the ACTIONS die, or of any item used, ends a player’s turn.
+
+Winning The Game: The first player to successfully reach a square on the opposite North/South side from where they began, AND complete a ‘forward movement’ action on that square, wins the game.
+
