@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cross the Park</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+		<script>var topics = new Array(5)
+ 	topics[0] = "What luck!! Not only did you manage to find some supplies, but you also have a good view of the path ahead, and it seems pretty safe. It&#39;s time to pack up and book it! <em>You may choose to roll the ITEMS die, then move forward one square</em>."
+	topics[1] = "When you got here, the surrounding area seemed pretty safe and clear. However, it seems that you took a bit too much time scrounging for useful items, because now there appears to be the closest thing to an army the wild denizens that inhabit this park can muster. Theyre damn close, and have even started flanking the sides of the place. You better take your things and retreat, while you still can! <em>You may choose to roll the ITEMS die, then move backward one square</em>."
+	topics[2] = "It was definitely worth stopping here, as you&#39;ve found quite a few interesting things to help your journey forward. Unfortunately, forward is not the way you&#39;ll be going right now, unless you can grow wings to fly over that giant chasm that opened up ahead after that last earthquake. <em>You may choose to roll the ITEMS die, then move East or West one square</em>."
+	topics[3] = "You utilize the momentary breath of safety to scout out a safe way forward from here, and can see a wide open path that goes for quite some time. You strike out post-haste! <em>Move forward three squares</em>."
+	topics[4] = "There doesn&#39;t seem to be anything of use here, but there doesn&#39;t seem to be any danger either. You decide to take advantage of the safe haven, and take a bit of a rest. It&#39;ll be a bit before you leave. <em>No Effect</em>."
+ 	topics[5] = "You might&#39;ve thought this place would mean a safe respite where you could rest your head, but you thought wrong! The crazed maniacs that have made this place their lair seem to be coming from the shadows, and before you know it, you&#39;re surrounded! <em>Enemy encounter, roll the DIE die</em>."
+
+var randomTopic = topics[Math.floor(Math.random() * topics.length)];
+</script>
+		<!---
+		/*		
+MAIN PAGE
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html
+ALL OTHER PAGES
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#&#39;page id&#39;
+*/---->
+		
+</head>
+<body>
+
+<!--Intro Page ------------------------------------------------------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html
+-->
+	<div data-role="page" id="intro" class="intro">	
+		<div data-role="header">
+			<h1>CROSS THE PARK</h1>
+		</div>
+		<p><strong>Goal: </strong>In this game players (2-6) will attempt to cross Central park in the midst of an apocalypse. The first player to reach the opposite North/South side from where they began wins.</p>
+		<p><strong>Components:</strong>
+        <ul>
+        <li><a href="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/MAP.png">Game Map</a></li>
+        <li>6 Player Tokens</li>
+        <li>1 D6</li>
+        <li>1 UTILITIES die</li>
+        <li>4 Action dice (Green/Yellow/Red/Blue)</li>
+        <li>1 DIE die</li>
+        <li>5 Location cards</li>
+        <li>QR Scanner for each Player</li>
+        </ul>
+        <strong>Set-Up/Game Start:</strong> All players start on one of the squares on either the North or  South edge of the map numbered 1-6. All the players roll the d6 to determine turn order, with the highest number going first (ties are re-rolled), and then going in clockwise order. Before beginning main gameplay, players roll the ITEMS die to receive their starting item.
+        </p>
+        <p>
+        <strong>Gameplay:</strong>
+        <ul>
+        <li>On their turn, players roll the ACTIONS die for the corresponding color of the square they are in. The color determines how hazardous the area is. (Safest: Green&rArr;Yellow/Blue&rArr;Red :Most Dangerous) They scan the QR code of the resulting die roll to determine the outcome of their travels</li>
+        <li>Searching a location (fulfilling the location card&#39;s text) is done when starting your turn in that location, not when landing there.</li>
+        <li>No movement action can move a player off the map, thus any action that would do so leaves them on the outermost square.</li>
+        <li>An adjacent square is any one directly next to the square, including diagonals.</li>
+        <li>Distance is counted by the least amount of non-diagonal movements required to move between squares.</li>
+        <li>Players may use an item in their possession whenever it is appropriate by the item&#39;s description. Players may only have two items at a time. Taking an opportunity to re-roll the ITEMS die when you already have two items will replace one of the items in your possession, of your choosing. Using all of the uses available for an item equates to losing that item.</li>
+        <li>If two players end up in the same square, they will &#39;fight&#39; to steal each other&#39;s resources. Both players roll the d6. If they tie their rolls, nothing happens. Otherwise, the player with the lower roll loses one item, of their choosing, if they have any, and the player with the higher roll has the option to roll the ITEMS die. Additionally, if one player rolls a 1, and the other player a 6, the player who rolled the 1 is &#39;mortally wounded&#39; and thus has to roll the DIE die. No items may be used in a player fight.</li>
+        <li>If a player has to roll the DIE die and dies, they must move their player token back to their starting position. They lose any items they had, and must roll the ITEMS die to get a new item.</li>
+        <li>Fulfilling the action of the ACTIONS die, or of any item you may use, ends a player&#39;s turn.</li>
+        </ul>
+        <strong>Winning The Game:</strong> The first player to successfully reach a square on the opposite North/South side from where they began, AND complete a &#39;forward movement&#39; action on that square, wins the game.
+        </p>
+	</div> 
+    <!-- new page div-->
+	<div data-role="page" id="map" class="intro"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>MAP</h1>
+        </div>                                      
+			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/MAP.png" width="470" align="middle"/>
+	</div><!-- end page div-->
+<!-- Action Page  ------------------------------------------------------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#act1-24
+-->
+	<div data-role="page" id="act1" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>A grotesque amalgamation of human body parts rounds the corner and begins shambling its way towards you. Your way forward is blocked! <em>Move East or West one square</em>.</p>
+	</div><!-- end page div-->
+     	<div data-role="page" id="act2" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You come upon a wide open field, and a clear path forward. <em>Move forward two squares</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act3" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You come upon a large rock formation that you would be able to climb, if it weren&#39;t for that bubbling, viscous ooze covering it. Better find another way! <em>Move backward one square.</em></p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act4" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>All those times you joked about global conditioning ring in your mind when a micro-tornado touches down right where you&#39;re standing. Luckily, you&#39;re safe in the eye of the storm. You&#39;ll just have to wait it out. <em>No effect.</em></p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act5" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You see a building a little ways away, and the path over to it seems pretty safe. What a break! <em>Move to the nearest location, regardless of its direction. If equidistant to two locations, player&#39;s choice</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act6" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p> An abandoned car in the middle of Central Park?? Well, who cares how it got here, time to see if there&#39;s anything of use in there.  <em>You may choose to roll the ITEMS die</em>.</p>
+	 </div><!-- end page div-->
+	      	<div data-role="page" id="act7" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>A fire hydrant seems to have been pouring out water for days, and the area&#39;s now closer to a marsh than a park. You should still be able to traverse it, but it definitely won&#39;t be a straight path. <em>Move diagonally forward one square (East/West is player&#39;s choice)</em>.</p>
+	 </div><!-- end page div-->
+	      	<div data-role="page" id="act8" class="Gaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>Oh golly, a Merry-Go-Round, you used to love those as a kid! One spin won&#39;t hurt anyone…… hopefully. <em>Roll the D6. 1 or 2: Move backward one square. 3 or 4: No effect. 5 or 6: Move forward one square</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act9" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>Two trucks barrel towards you from in front and behind. You dive out of the way at the last second and roll down a hill, catching glimpses of the fiery explosion you just barely escaped. <em>Roll the D6, and move one square in the corresponding direction. 1: Diagonally forward East. 2: East. 3: Diagonally backward East. 4: Diagonally backward West. 5: West. 6: Diagonally forward West</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act10" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You&#39;d heard about the genetic engineering experiments they&#39;d been doing at the Museum of Natural History, but didn&#39;t think it could be real. Those T-Rex&#39;s barrelling towards you seem real enough, though. Your super-honed caveman instincts kick into action, and you start running, not even looking where you&#39;re going.<em>Move East or West two squares</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act11" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>The ground ahead has collapsed, but you don&#39;t see any other way around it. You&#39;re pretty sure you can make it across using that mangled jungle gym and the water fountain pipes as a bridge. You thought sinkholes only happened in places like Malaysia!?!  <em>Move forward one square.</em></p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act12" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>Clearly, you&#39;re one of the few idiots who &#39;s not in a car. Those that are have made the path into a high speed game of Frogger, but you&#39;re sure you can beat it with your cat-like reflexes. You run forward, dodging and weaving masterfully, but just as you reach the other side, you&#39;re slammed into by a car and just barely manage to jump onto the hood. As the driver veers the car around, trying to shake you off, they accelerate to top speed. The brakes are suddenly slammed, and you go flying through the air, landing in a bush, dazed, but alive. <em>Move forward two squares</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act13" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You&#39;ve always been agnostic, but there&#39;s never been a better time than this to test the power of prayer. You hit your knees and start spouting a whole lot of “Jesus&#39;s”, “Thou&#39;s”, and “Please&#39;s”. Suddenly, there&#39;s a deafening &#39;BOOM&#39; as a passenger liner crashes in front of you. You try to ignore the smoldering bodies as you scavenge the wreck for supplies, because, well, God works in mysterious ways, right? <em>You may choose to roll the ITEMS die</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act14" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>FDR once said, “The only thing we have to fear is fear itself.” Well….. that giant mutant baby has a sign around its neck that says, “FeEr iTsALf.” It might not be exactly right, but you still seem pretty paralyzed by fear. <em>Enemy encounter, roll the DIE die</em>.</p>
+	 </div><!-- end page div-->
+	      	<div data-role="page" id="act15" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>The ground beneath your feet begins to shake, and you fear for an earthquake. It&#39;s not until you hear the sound of rushing water that you look up to be faced with a 50 foot wall of water bearing down upon you. Before there&#39;s time to react, you&#39;re hauled away by the mighty force of nature, and it&#39;s several minutes before you manage to grab hold of something solid. Unfortunately, that just so happens to be the metal gate on the other side of the park. <em>Roll the D6. 1, 2, or 3: Move to the Eastern-most square in your row. 4, 5, or 6: Move to the Western-most square in your row</em>.</p>
+	 </div><!-- end page div-->
+	      	<div data-role="page" id="act16" class="Yaction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>The trail of smoke up ahead is unmistakable: Marauders. You sneak in for a closer look, sticking to the brush, and get a good view of a camp of about twenty crazed-looking men and women. You hear them mention sending patrols in your direction, and high-tail it out of there. You&#39;re going to have to double-back and find another way around those maniacs. <em>Move backward one square</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act17" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>Apparently, the New York City planners didn&#39;t realize they were building a park on top of an ancient Native American burial ground. As the ectoplasmic spooks start circling around you, you wonder if the bullets you found are silver or not. Or wait, is that for werewolves…. Oh crap! <em>Enemy encounter, roll the DIE die</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act118" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You notice an emergency kit sitting atop a rock formation. Having learned a thing or two in your travels, you circle it warily, scanning for traps. You move swift like a ninja, doing a combat roll as you grab the kit, and scurrying into the treeline to inspect your bounty. A squirrel runs past… <em>You may choose to roll the ITEMS die</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act19" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>You stumble upon what appears to be a giant slingshot that&#39;s labeled “Fast Travel Station.” It seems sketchy at best, but at this point you&#39;ve got nothing left to lose. Stepping in, and setting it off, you get flung through the air at top speed. Being sure that these are your last moments alive, you take the opportunity to survey the carnage of what Central Park has become, and realize you&#39;re glad to be rid of it. It is with this acceptance of your death that you plunge into a pile of TempurPedic mattresses, doomed to continue on. <em>Move forward three squares</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act20" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>The ground around you starts to collapse, and fire begins to lick out of the newly formed crevices. As you slowly back away from the unbearable heat, you hear a distinctly maniacal laughter, and a deep voice bellow, “I&#39;m Back, B*tche$”, at which point you start running. <em>Move backwards two squares</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act21" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>As you venture through the throngs of trees, you hear a moaning sound grow louder and louder. It&#39;s not until you come face-to-face with a shambling undead monstrosity that you realize you&#39;re surrounded by a zombie horde. <em>Enemy encounter, roll the DIE die</em>.</p>
+	 </div><!-- end page div-->
+     	<div data-role="page" id="act22" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>The field you were walking in seemed safe enough, until you noticed the headlights careening towards you. As you turn to run, you realize there are what appear to be armored SUV&#39;s coming from every direction. As they close in, a group of what seem to be businessmen turned marauders bound out of the vehicles wielding chainsaws and golf clubs. <em>Enemy encounter, roll the DIE die</em>.</p>
+	 </div><!-- end page div-->
+	 	<div data-role="page" id="act23" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>As you&#39;re passing through a playground, an odd-looking man pokes his head out from the castle atop the slide…. along with his semi-automatic sniper rifle. He demands a show-tune as payment for passage through his land, and even agrees to show you a safe route ahead if he&#39;s thoroughly pleased. Better warm-up your jazz hands, or you&#39;re gonna have to run for it! <em>Roll the D6, and move two diagonal squares in the corresponding direction. 1 or 2: Forward and East. 3: Backward and East. 4: Backward and West. 5 or 6: Forward and West</em>.</p>
+	 </div><!-- end page div-->
+	 	<div data-role="page" id="act24" class="Raction"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ACTION DIE</h1>
+        </div>                                      
+			<h1>Action</h1>
+            <p>OH DEAR LORD THE STENCH! A major sewage line must have ruptured, because it smells like Big Foot had barbequed Swamp Monster, then took a crap all over this field….. and died whilst doing so. Every living thing is staying clear of here, so if you can withstand the overwhelming fetor of human feces, you should be fine to make it through. It might just be worth it to go around, though - who knows when you&#39;ll get your next shower. <em>Move forward one square OR Move two squares East or West</em>.</p>
+	 </div><!-- end page div-->
+     
+<!-- ITEMS Page  -------------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#ult1-12
+----------------------------------------->
+
+<div data-role="page" id="utl1" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Shotgun</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Shotgun.png" width="470" align="middle">
+            <p>“CHICK-CLICK-BOOM” Blow away your enemies, even if you&#39;ve got worse aim than Helen Keller. The favorite of cops, hillbillies, and Duke Nukem, and a staple of apocalypse survival. <em>Re-roll an action roll that results in an &#39;enemy encounter&#39; action. Two uses</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl2" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Binoculars</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Binoculars.png" height="200" align="middle">
+            <p> A bird-watcher&#39;s best friend, and your eye out for danger. You can get a good look at the path ahead of you to plan your route. <em>Move an extra square forward on a &#39;forward movement&#39; action. Two uses</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl3" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Rope</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Rope.png" height="200" align="middle">
+            <p>A bundle of strong hemp rope. Useful for escaping dangerous situations... or for a swift end to the cruel world your life&#39;s become. <em>Avoid having to roll a DIE Die. One use</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl4" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>YO-YO</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Yo_Yo.png" height="200" align="middle">
+            <p>The world&#39;s crumbling around you... But at least you have a yo-yo!</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl5" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Flashlight</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Flashlight.png" height="200" align="middle">
+            <p>A core element of any emergency kit, the bringer of light in the darkness, as long as you don&#39;t run out of batteries! The flashlight helps you navigate dangers and search out help &amp; safety. <em>Reduce the difficulty of your square by one tier. One use</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl6" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Pistol</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Hand_Gun.png" height="200" align="middle">
+            <p>So much for that three day waiting period... Some people say guns are for cowards, but the end of the world is no time to start being a hero, so starting poppin&#39; some caps. <em>Re-roll an action roll that results in an &#39;enemy encounter&#39; action. One use</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl7" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Katana</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Ka_tana.png" width="470" align="middle">
+            <p>The way of the sword calls your name. Slice down foes left and right with the deft skill of a samurai, or at least the fumbling attacks of some dope with a sword. <em>Re-roll an action roll that results in an &#39;enemy encounter&#39; action. Can be used multiple times on one turn</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl8" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Road Flare</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/road_flare.png" height="200" align="middle">
+            <p>Remember when your wife pestered you for being overly cautious for putting that flare in your car safety bag? Well, who&#39;s laughing now!<em>Negate the result of any encounter, with no effect on this turn. Four uses</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl9" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Rocket Launcher</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Rocket_Launcher.png" width="470">
+            <p>Whether you need to decimate a crowd of enemies, take down the villain&#39;s escaping boat, or blow open a convenient escape route through that concrete wall, the rocket launcher is your apocalypse multi-tool. The Swiss can keep their pocket knife. <em>Automatically change the result of your action roll to a movement action in any direction. One use</em>.</p>
+	 </div><!-- end page div-->
+        <div data-role="page" id="utl10" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Crossbow</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Crossbow.png" height="200" align="middle">
+            <p>It&#39;s time to get all medieval on their buttocks! This would be really awesome if it didn&#39;t take five mins to crank this thing up. You better keep moving if you don&#39;t want to get ye&#39; olde murdered. <em>Alter an action roll that results in an &#39;enemy encounter&#39; into a one square East or West movement action. Three uses</em>.</p>
+	 </div><!-- end page div-->
+     <div data-role="page" id="utl11" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Binoculars</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Binoculars.png" height="200" align="middle">
+            <p>A bird-watcher&#39;s best friend, and your eye out for danger. You can get a good look at the path ahead of you to plan your route. <em>Move an extra square forward on a &lsquo;forward movement&rsquo; action. Two uses</em>.</p>
+	 </div><!-- end page div-->
+	 <div data-role="page" id="utl12" class="utility"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>ITEM</h1>
+        </div>                                      
+			<h1>Lighter</h1>
+   			<img src="http://beckyheritage.com/designprocess_fall2013/section2/CROSS/images/Lighter-1.png" height="200" align="middle">
+            <p>And they said being a smoker would kill you, hah! Lighters can be extremely useful for providing light, making makeshift explosives, and well…. lighting your cigarettes. Hope you&#39;ve mastered those child safety guards! <em>Reduce the difficulty of your square by up to two tiers OR If within an adjacent square of a location, negate the result of your action roll, and move to the location. One use</em>.</p>
+	 </div><!-- end page div-->
+	 
+<!-- Die Pages ------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#die1-8
+------------------------------------------------>
+<div data-role="page" id="die1" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You don&#39;t notice the group of children marauders as you take shelter in nearby buildings to get out of the rain. You fall asleep to pass the time, and thats when they strike. They slice your abdomen open and leave your corpse to rot, taking all your supplies. You watch from the ground as your innards slip out, and the light fades.<strong>Start again from the beginning reroll the Utility die. </strong></p>
+   		
+	 </div><!-- end page div-->
+<div data-role="page" id="die2" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You come down with a really bad flu. With no modern medicine, and no fluids around to drink, you start to have violent coughing fits, each producing more blood. You decide you&#39;ve had enough of this world and its suffering, find the tallest building around, and throw yourself off. Unfortunately, you end up stuck in a tree, where a pack of slavering velociraptors find you and eat you as you hang there helpless. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->
+     <div data-role="page" id="die3" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You notice a cute dog on the side of the street, and go over to say hello. Suddenly, the dog grows to twice your size, opens its jaws, and swallows you whole. After you reach its stomach, it shrinks back down to its small size, walks over to a small patch of grass, and relieves itself. The only recognizable sign of your body is a single pinky finger. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->
+     <div data-role="page" id="die4" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You find a little old man pushing a shopping cart down the street. You decide to be a nice person and see if he needs help or has something to trade. Despite your intentions, you approach him with your weapon drawn. As you get near, he whips around with lighting speed and puts a bullet between your eyes. He then pushes his cart over to your body and gathers anything usable, putting your body in his cart, presumably to eat for dinner later that night. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->     
+     <div data-role="page" id="die5" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You notice a bear cub on the ground crying out for help. There is no mother nearby so you go over and try to comfort it. You give it some of your rations and it stops crying and starts to be happy. You could even swear you heard it laugh. Thats when you feel the drool, turning around slowly to find yourself face to face with the biggest grizzly bear you&#39;ve ever seen. The cub jumps up and down in excitement as its mother rips your head from your body, and drags it over to the cub to eat for dinner. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->
+     <div data-role="page" id="die6" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You manage to find a bit of booze, and a seemingly safe place to drink it. You spend the night with your spirits, but only realize how strong this hooch really is right as you&#39;re losing consciousness. You come to right as you’re diving off the top of a skyscraper screaming &quot;I AM A GOLDEN GOD!!!!!&quot;, completely naked. If the fall hadn&#39;t killed you, I’m sure the shame would have. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->
+     <div data-role="page" id="die7" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You finally go completely insane, and start gathering the bones of the fallen to construct an occultic altar. You manage to find a still living victim amongst the carnage, and place him atop as your sacrifice. Chanting the Lorem Ipsum again and again, you plunge your dagger through their heart, and reach towards the sky, seemingly grasping for an unknown power. With a flash of light, the deed is done, as your lightning-charred body slumps to the ground, a bit more dead than you were expecting. <strong>Start again from the beginning reroll the Utility die.</strong></p>
+   		
+	 </div><!-- end page div-->
+     <div data-role="page" id="die8" class="die"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>DIE DIE</h1>
+        </div>                                      
+			<h1>DEATH</h1>
+            <p>You are transported through an interdimensional portal to a desert island where Dr. No is going to kill you with his laser unless you can craft a record player with the resources at your disposal. You succeed, and he graciously sends you back to your Manhattan hell hole to die another day. <strong>No effect.</strong></p>
+   		
+	 </div><!-- end page div-->
+	 
+     <!-- Swim Pages ------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#die1-8
+------------------------------------------------>
+     <div data-role="page" id="swim1" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>The skills you learned in your one semester on the high school swim team suddenly rush back to you, and your improved form gives you a burst of speed.<em>Move forward two squares</em>.</p>
+   		
+	 </div><!-- end page div-->
+	 <div data-role="page" id="swim2" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>That fin in the water is almost surely not a dolphin… Luckily, you&#39;re not bleeding at all, so this killing machine should have no reason to attack. It does seem to be interested in you, however, and has started circling you. You should probably try to move as little as possible, at least for a little while...<em>No effect</em>.</p>
+   		
+	 </div><!-- end page div-->
+	 <div data-role="page" id="swim3" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>The piled up carcasses of decimated ships seems like a welcome moment of rest at first, as foreboding an image as it may be. As you start to tread closer, however, you glimpse the slimy tip of what looks like a giant tentacle slither beneath the water. You realize what probably wrecked those ships, and make the wise decision to find another way past. <em>Move East or West one square</em>.</p>
+   		
+	 </div><!-- end page div-->
+	 <div data-role="page" id="swim4" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>For seemingly no reason, the water starts to develop a pretty strong current. You try to fight it at first, but as it grows stronger and stronger, you finally see the giant whirlpool you&#39;re being pulled towards. Realizing the futility of fighting it, you mentally prepare yourself and suck in as much air as you can manage. After being tossed around underwater for some time, you finally emerge, gasping for air, and realize you have no clue where you are. <em>Roll the D6, and move one square in the corresponding direction. 1: Diagonally forward East. 2: East. 3: Diagonally backward East. 4: Diagonally backward West. 5: West. 6: Diagonally forward West</em>.</p>
+   		
+	 </div><!-- end page div-->
+	 <div data-role="page" id="swim5" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>Maybe going the water route wasn&#39;t such a bad idea! It&#39;s a bit harder to make good headway, but at least the way forward seems safe enough. You&#39;ll just have to keep trucking! <em>Move forward one square</em>.</p>
+   		
+	 </div><!-- end page div-->
+      <div data-role="page" id="swim6" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>Down below, at the bottom of the waterbed, you notice something blinking. It doesn&#39;t seem too deep to reach, and you seem to be momentarily safe, so you decide to go for it. You dive down, and after about 45 seconds re-emerge, with just a bit of popping in your ears to suffer through as you glance at your prize. The alert beacon was tied to a pack, and you can feel something inside, wonder what it could be! <em>You may choose to roll the ITEMS die</em>.</p>
+   		
+	 </div><!-- end page div--> 
+	 <div data-role="page" id="swim7" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>A disgusting black ooze spills towards you on the surface of the water. You don&#39;t know what it is, but you&#39;re not going to stick around to find out! <em>Move backward one square</em>.</p>
+   		
+	 </div><!-- end page div--> 
+	 <div data-role="page" id="swim8" class="swim"> <!-- new page div-->
+		<div data-role="header"> 
+        	<h1>SWIM DIE</h1>
+        </div>                                      
+			<h1>ACTION</h1>
+            <p>Speedboats?!? For real? Where these marauders managed to find the right fuel is one question, but how they managed to get the damn things here in the first place is a whole other one. Regardless of the answers, it doesn&#39;t look like they went through all that trouble just to have a nice ride out on the water... <em>Enemy encounter, roll the DIE die</em>.</p>
+   		
+	 </div><!-- end page div-->
+	 <!-- Locations Page  -------------------------------
+http://beckyheritage.com/designprocess_fall2013/section2/CROSS/CROSS.html#local1-5
+----------------------------------------->
+<div data-role="page" id="local1" class="local">	<!-- new page div-->
+	<div data-role="header">
+		<h1>Great Hill</h1>
+	</div>
+	<p>Memories of family picnics on sunny spring days flash your mind. Then, reality sets in, and you realize those stately elms are now just a small barrier between you and the chaos around you. A few fires burn in garbage cans, filled with the last remnants of the picnic tables that once filled this place. As they slowly wither, so do your your hopes of salvation
+	</p>
+   <script> document.write("<p>" + randomTopic + "</p>");</script>
+</div><!-- end page div-->
+<div data-role="page" id="local2" class="local">	<!-- new page div-->
+	<div data-role="header">
+		<h1>Conservatory Gardens</h1>
+	</div>
+	<p>In place of the Three Dancing Maiden&#39;s spouts of water, globs of vile brown goo eke out, plopping onto cracked tile covered in small piles of bones. The Vanderbilt Gate lies half of its hinges, its metal bars twisted into malevolent shapes as terrifying as the severed heads that adorn their tips. You can&#39;t imagine what happened to the last denizens of this horrid place, but hopefully the same won&#39;t happen to you!</p>
+   <script> document.write("<p>" + randomTopic + "</p>");</script>
+</div><!-- end page div-->
+<div data-role="page" id="local3" class="local">	<!-- new page div-->
+	<div data-role="header">
+		<h1>Metropolitan Museum of Art</h1>
+	</div>
+	<p>What might have once been beautiful, inspiring displays of mankind&#39;s devotion to the arts has now become a vile scene of our most depraved instincts. Reliefs that survived from antiquity smashed to bits, statues of the human form shoved into lewd sexual positions, and the paintings of the greatest masters set aflame for the warmth of savages. This place fills you with an immense sadness, and an even more overwhelming sense of dread.</p>
+   <script> document.write("<p>" + randomTopic + "</p>");</script>
+</div><!-- end page div-->
+<div data-role="page" id="local4" class="local">	<!-- new page div-->
+	<div data-role="header">
+		<h1>Tavern on the Green</h1>
+	</div>
+	<p>Once a space for some of the most exquisite dining to be found almost anywhere in the world, the only sign of its past life lies crumpled in the center of this desolate shell. The last few crystals remaining on the chandelier glint in the light of the fires around it, glimmers of the decadence and hedonism that led to the horror that now surrounds you.</p>
+   <script> document.write("<p>" + randomTopic + "</p>");</script>
+</div><!-- end page div-->
+<div data-role="page" id="local5" class="local">	<!-- new page div-->
+	<div data-role="header">
+		<h1>Central Park Zoo</h1>
+	</div>
+	<p>What has come to the world when it&#39;s safer to be in a place roaming with numerous wild animals roaming free? As terrified as you are of these ferocious beasts, you hope beyond hopes that any more dangerous undesirables have been kept at bay for the very same reason. What is it they say, “The enemy of your enemy is your friend”? Let&#39;s just hope they&#39;re feeling friendly today.</p>
+   <script> document.write("<p>" + randomTopic + "</p>");</script>
+   
+</div><!-- end page div-->
+
+
+
+	 
+ <!------------
+ Thank you for your help in completing this project.
+ Erik, Ishik, & Alessandro
+ -------------------------------------------------------------->
+
+  </body>
+  </html>  
